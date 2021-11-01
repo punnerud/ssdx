@@ -1,7 +1,7 @@
 #!/bin/bash
 
 rm -rf .ssdx											# old install of ssdx
-git clone https://github.com/navikt/ssdx.git .ssdx		# download app
+git clone https://github.com/johnforeland/ssdx.git .ssdx		# download app
 cd .ssdx
 
 rm -rf venv
