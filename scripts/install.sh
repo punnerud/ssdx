@@ -4,6 +4,9 @@ rm -rf .ssdx											# old install of ssdx
 git clone https://github.com/johnforeland/ssdx.git .ssdx		# download app
 cd .ssdx
 
+git clone https://github.com/billryoung/sfdx-wry-plugin.git
+sfdx plugins:link sfdx-wry-plugin
+
 rm -rf venv
 mkdir venv
 virtualenv venv

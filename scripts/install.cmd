@@ -4,6 +4,9 @@ RD /S /Q "%cd%\.ssdx"
 call git clone https://github.com/johnforeland/ssdx.git .ssdx
 cd .ssdx
 
+call git clone https://github.com/billryoung/sfdx-wry-plugin.git
+call sfdx plugins:link sfdx-wry-plugin
+
 call pip3 install virtualenv
 RD /S /Q "%cd%\venv"
 call mkdir venv

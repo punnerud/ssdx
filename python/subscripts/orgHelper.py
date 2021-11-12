@@ -187,8 +187,8 @@ def createScratchOrg_importDummyData():
 
 	helper.startLoading("Importing dummy data")
 
-	results = helper.tryCommand(None, ["echo y | sfdx plugins:install sfdx-wry-plugin@0.0.9"], False, False, False)
-	if (results[0]): return results
+	# results = helper.tryCommand(None, ["echo y | sfdx plugins:install sfdx-wry-plugin@0.0.9"], False, False, False)
+	# if (results[0]): return results
 
 	try:
 		for folder in next(os.walk(path))[1]:
