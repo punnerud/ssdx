@@ -21,7 +21,7 @@ pip3 install virtualenv
 
 # ssdx installation
 cd [path_to_dx_project]
-bash <(curl -s https://raw.githubusercontent.com/navikt/ssdx/master/scripts/install.sh)
+bash <(curl -s https://raw.githubusercontent.com/johnforeland/ssdx/master/scripts/install.sh)
 ```
 
 ## Windows
@@ -41,7 +41,7 @@ bash <(curl -s https://raw.githubusercontent.com/navikt/ssdx/master/scripts/inst
 #### SSDX Installation
 
 1. Right-click on
-[install.cmd](https://raw.githubusercontent.com/navikt/ssdx/master/scripts/install.cmd) and click "Save Link As" (or equivalent)
+[install.cmd](https://raw.githubusercontent.com/johnforeland/ssdx/master/scripts/install.cmd) and click "Save Link As" (or equivalent)
 2. Save to root of SFDX project folder as "install.cmd"
 3. Double click install.cmd
 
