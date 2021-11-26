@@ -110,8 +110,8 @@ def createScratchOrg_pushMetadata(term):
 
 # PUSH UNPACKAGABLE METADATA
 # ------------------------------
-def createScratchOrg_pushNonDeployedMetadata(term):
-	path = helper.getConfig('locations.unpackagable')
+def createScratchOrg_deployMetadata(term, location, title):
+	path = helper.getConfig(location)
 	
 	if (path is None):
 		return False, []
@@ -119,7 +119,7 @@ def createScratchOrg_pushNonDeployedMetadata(term):
 	if (not helper.folderExists(path)):
 		return True, ['Folder \'{}\' does not exists'.format(path)]
 	
-	helper.startLoading("Pushing unpackagable metadata")
+	helper.startLoading("{} ({})".format(title, path))
 	return helper.tryCommand(term,  ["sfdx force:source:deploy -p " + path], True, True, False)
 
 # ASSIGN PERM SETS

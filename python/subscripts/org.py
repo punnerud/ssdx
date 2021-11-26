@@ -40,6 +40,12 @@ def createScratchOrg(term):
 
 	results, retry = [True, []], True
 	while results[0] and retry:
+		results = orgHelper.createScratchOrg_deployMetadata(term, "deployment.pre_deployment", "Pre-deployment")
+		retry = orgHelper.retry(term, results)
+	if (results[0] and not retry): return True
+
+	results, retry = [True, []], True
+	while results[0] and retry:
 		results = orgHelper.createScratchOrg_installManagedPackages(term)
 		retry = orgHelper.retry(term, results)
 	if (results[0] and not retry): return True
@@ -58,7 +64,7 @@ def createScratchOrg(term):
 
 	results, retry = [True, []], True
 	while results[0] and retry:
-		results = orgHelper.createScratchOrg_pushNonDeployedMetadata(term)
+		results = orgHelper.createScratchOrg_deployMetadata(term, "deployment.post_deployment", "Post-deployment")
 		retry = orgHelper.retry(term, results)
 	if (results[0] and not retry): return True
 
