@@ -95,7 +95,7 @@ def createScratchOrg_installUnlockedPackages(term):
 		keys = getPackageKeys(packages, packageKey)
 		keysParam = ' --installationkeys "{}"'.format(keys)
 
-	cmd = 'sfdx rstk:package:dependencies:install -w 10 --noprecheck' + keysParam
+	cmd = 'sfdx rstk:package:dependencies:install -w 20 --noprecheck' + keysParam
 	results = helper.tryCommand(term, [cmd], True, True, False)
 	return results
 
