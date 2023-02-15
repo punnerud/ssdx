@@ -9,7 +9,7 @@ title = "SSDX Helper"
 def reinstall(term):
 	results, retry = [True, []], True
 	while results[0] and retry:
-		results = orgHelper.createScratchOrg_installPackages()
+		results = orgHelper.createScratchOrg_installUnlockedPackages()
 		retry = orgHelper.retry(term, results)
 	
 	if (results[0]):

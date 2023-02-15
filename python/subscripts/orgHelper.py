@@ -83,19 +83,20 @@ def createScratchOrg_installUnlockedPackages(term):
 
 	helper.startLoading("Installing unlocked packages from 'sfdx-project.json'")
 	
-	results = helper.tryCommand(None, ["echo y | sfdx plugins:install rstk-sfdx-package-utils@0.1.12"], False, False, False)
+	results = helper.tryCommand(None, ["echo y | sfdx plugins:install sfpowerkit@6.1.0"], False, False, False)
 	if (results[0]): return results
 
 	keysParam = ''
 	path = helper.getConfig('locations.package-key')
 	if (path is not None):
-		packageKey = helper.getContentOfFile(path)
+		packageKey = helper.getContentOfFile(path).rstrip()
 		if (packageKey == None): return True, ["{} file does not exists. Without it, packages cannot be installed. See Main Menu > Other > Add Package Key to add it.".format(path)]
 	
 		keys = getPackageKeys(packages, packageKey)
 		keysParam = ' --installationkeys "{}"'.format(keys)
 
-	cmd = 'sfdx rstk:package:dependencies:install -w 20 --noprecheck' + keysParam
+	cmd = 'sfdx sfpowerkit:package:dependencies:install --noprompt --wait 20' + keysParam
+	
 	results = helper.tryCommand(term, [cmd], True, True, False)
 	return results
 
@@ -293,8 +294,12 @@ def askUserForOrgs(term, lookingForRegularOrgs, text, subtitle, selectMultiple):
 		return originalItems[selection]
 
 
-def getPackageKeys(data, packageKey):
-	keys = ''
-	for iterator in range(len(data)):
-		keys = "{} {}:{}".format(keys, iterator + 1, packageKey) # should be in the format of '1:key 2:key 3:key etc, one for each dependency
-	return keys
+def getPackageKeys(dependencies, packageKey):
+	# keys = ''
+	# for iterator in range(len(data)):
+	# 	keys = "{} {}:{}".format(keys, iterator + 1, packageKey) # should be in the format of '1:key 2:key 3:key etc, one for each dependency
+	# return keys
+	keys = []
+	for dependency in dependencies:
+		keys.append(f"{dependency['package']}:{packageKey}") # should in the format of 'package1:key package2:key'
+	return " ".join(keys)
