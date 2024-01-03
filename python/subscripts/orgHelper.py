@@ -81,11 +81,12 @@ def createScratchOrg_installUnlockedPackages(term):
 
 	if (len(packages) == 0): return False, []
 
-	helper.startLoading("Installing unlocked packages from 'sfdx-project.json'")
 	
-	results = helper.tryCommand(None, ["echo y | sfdx plugins:install sfpowerkit@6.1.0"], False, False, False)
+	helper.startLoading("Installing sfpowerscripts (if it fails, install node/npm)")
+	results = helper.tryCommand(None, ["npm install --global @dxatscale/sfpowerscripts@22.5.4"], False, False, False)
 	if (results[0]): return results
 
+	helper.startLoading("Installing unlocked packages from 'sfdx-project.json'")
 	keysParam = ''
 	path = helper.getConfig('locations.package-key')
 	if (path is not None):
@@ -95,7 +96,8 @@ def createScratchOrg_installUnlockedPackages(term):
 		keys = getPackageKeys(packages, packageKey)
 		keysParam = ' --installationkeys "{}"'.format(keys)
 
-	cmd = 'sfdx sfpowerkit:package:dependencies:install --noprompt --wait 20' + keysParam
+
+	cmd = 'sfpowerscripts dependency:install --installationkeys ' + keysParam
 	
 	results = helper.tryCommand(term, [cmd], True, True, False)
 	return results

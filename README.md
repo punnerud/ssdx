@@ -17,6 +17,7 @@ This repo contains SSDX Helper. Its goal is to make the life of Salesforce Devel
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" # Homebrew is recommended for installing git and python quickly
 brew install git
 brew install python@3.9
+brew install node@18
 pip3 install virtualenv
 
 # ssdx installation
@@ -29,6 +30,7 @@ bash <(curl -s https://raw.githubusercontent.com/johnforeland/ssdx/master/script
 #### Prerequisites
 
 - [git](https://git-scm.com/download/win)
+- [node](https://nodejs.org/en/download)
 - [python3](https://www.python.org/ftp/python/3.8.0/python-3.8.0.exe)
   - **Important!** Install with 'ADD PYTHON 3.8 TO PATH' checked
   - Checkbox appears on first windows screen when installing
