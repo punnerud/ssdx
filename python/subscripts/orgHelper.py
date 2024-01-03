@@ -94,7 +94,7 @@ def createScratchOrg_installUnlockedPackages(term):
 		if (packageKey == None): return True, ["{} file does not exists. Without it, packages cannot be installed. See Main Menu > Other > Add Package Key to add it.".format(path)]
 	
 		keys = getPackageKeys(packages, packageKey)
-		keysParam = ' --installationkeys "{}"'.format(keys)
+		keysParam = '"{}"'.format(keys)
 
 
 	cmd = 'sfpowerscripts dependency:install --installationkeys ' + keysParam
