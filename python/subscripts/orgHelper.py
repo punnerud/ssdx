@@ -27,7 +27,7 @@ def createScratchOrg_deletePreviousScratchOrg(term, deletePrevious):
 def createScratchOrg_createOrg(term, scratchOrgName):
 	helper.startLoading("Creating new Scratch Org")
 	results = helper.tryCommand(term, 
-		["sfdx force:org:create " + 
+		["sfdx org create scratch " + 
 		"-f ./config/project-scratch-def.json " + 
 		"--setalias {} ".format(scratchOrgName) + 
 		"--durationdays 5 " + 
